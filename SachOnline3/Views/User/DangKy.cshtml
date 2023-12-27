@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "DangKy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Đăng Ký</h2>
+
+@using (Html.BeginForm("DangKy", "User", FormMethod.Post))
+{
+    <div>
+        Họ Tên: <input type="text" name="HoTen" required /><br />
+        Tên Đăng Nhập: <input type="text" name="TenDN" required /><br />
+        Mật Khẩu: <input type="password" name="MatKhau" required /><br />
+        Nhập Lại Mật Khẩu: <input type="password" name="MatKhauNL" required /><br />
+        Email: <input type="email" name="Email" required /><br />
+        Số Điện Thoại: <input type="text" name="DienThoai" required /><br />
+        Địa Chỉ: <input type="text" name="DiaChi" required /><br />
+        Ngày Sinh: <input type="date" name="NgaySinh" required /><br />
+        <input type="submit" value="Đăng Ký" />
+    </div>
+}
+
+@if (ViewData["err1"] != null)
+{
+    <div>@ViewData["err1"]</div>
+}
+
+
+@if (ViewBag.Thongbao != null)
+{
+    <div>@ViewBag.Thongbao</div>
+}

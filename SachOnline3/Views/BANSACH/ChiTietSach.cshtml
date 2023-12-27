@@ -1,0 +1,30 @@
+﻿@model SachOnline3.Models.SACH
+@{
+    ViewBag.Title = "ChiTietSach";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@helper Truncate(string s, int length)
+{
+    if (s.Length < length)
+    {
+        @s
+    }
+    else
+    {
+        @s.Substring(0, length)<text>....</text>
+    }
+}
+
+<h2>ChiTietSach</h2>
+
+<div class="card">
+    <h3 class="card-title">@Model.Tensach</h3>
+    <img src="~/Image/@Model.Anhbia" class="card-img-top" alt="Not found image" style="width:500px; height:350px;align-self:center">
+    <div class=" card-body">
+        <p class=" card-text">@Html.Raw(@Truncate(Model.Mota.Replace("\n", ""), 10))</p>
+        <p class=" card-text">@Model.Ngaycapnhat</p>
+        <p class=" card-text">@Model.Giaban</p>
+        <a href="" class="btn btn-primary">Add to card </a>
+    </div>
+
+</div>  

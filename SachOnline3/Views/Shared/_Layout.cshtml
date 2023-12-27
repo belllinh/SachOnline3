@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+    <script src="~/Scripts/popper.min.js"></script>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.bundle.min.js></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+
+</head>
+<body>
+    @*@Navbar@*@
+    <nav class="navbar navbar-expand-lg bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" style="color: lightcyan" href="#">SachOnline</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" style="color: lightcyan" aria-current="page" href="#">TRANG CHỦ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" style="color: lightcyan" aria-current="page" href="#">GIỚI THIỆU</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" style="color: lightcyan" aria-current="page" href="#">LIÊN HỆ</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" style="color: lightcyan" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            SÁCH THEO CHỦ ĐỀ
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Ngoại Ngữ</a></li>
+                            <li><a class="dropdown-item" href="#">Công Nghệ Thông Tin</a></li>
+                            <li><a class="dropdown-item" href="#">Luật</a></li>
+                            <li><a class="dropdown-item" href="#">Văn Học</a></li>
+                            <li><a class="dropdown-item" href="#">Khoa Học Kỹ Thuật</a></li>
+                            <li><a class="dropdown-item" href="#">Nông Nghiệp</a></li>
+                            <li><a class="dropdown-item" href="#">Lịch Sử, Địa Lý</a></li>
+                            <li><a class="dropdown-item" href="#">Kinh Tế</a></li>
+                            <li><a class="dropdown-item" href="#">Nghệ Thuật Sống</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" style="color: lightcyan" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            SÁCH THEO NHÀ XUẤT BẢN
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Nhà Xuât Bản Trẻ</a></li>
+                            <li><a class="dropdown-item" href="#">NXB Thông Kê</a></li>
+                            <li><a class="dropdown-item" href="#">Kim Đồng</a></li>
+                            <li><a class="dropdown-item" href="#">Đại Học Quốc Gia</a></li>
+                            <li><a class="dropdown-item" href="#">Văn Hóa Nghệ Thuật</a></li>
+                            <li><a class="dropdown-item" href="#">Văn Hóa </a></li>
+                            <li><a class="dropdown-item" href="#">Lao Động - Xã Hội</a></li>
+                            <li><a class="dropdown-item" href="#">Khoa Học & Kỹ Thuật</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    @*<li class="nav-item">
+                        <a class="nav-link disabled">Disabled</a>
+                    </li>*@
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+
+
+            </div>
+        </div>
+        @if (Session["TaiKhoan"] != null)
+        {
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="@Url.Action("DangXuat", "User")"><span class=" fade-in-left-button glyphicon glyphicon-user"></span> Log Out </a></li>
+            </ul>
+        }
+        else
+        {
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="@Url.Action("DangKy", "User")"><span class=" fade-in-left-button glyphicon glyphicon-user"></span> Sign Up</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="@Url.Action("DangNhap", "User")"><span class=" fade-in-left-button glyphicon glyphicon-user"></span> Login </a></li>
+            </ul>
+        }
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="@Url.Action("Index", "GioHang")"><span class=" fade-in-left-button glyphicon glyphicon-user"></span> Card </a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        @Html.Action("SliderPartial", "BANSACH")
+     
+    </div>
+    <br />
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                @Html.Action("ChuDePartial", "BANSACH")
+                <br />
+                @Html.Action("NhaXuatBanPartial","BANSACH") 
+            </div>
+
+            <div class=" col-md-9">
+                @RenderBody()
+            </div>
+            <hr/>
+            <div>@Html.Action("SachBanNhieu","BANSACH")</div>
+            <hr/>
+            <footer style="background-color:lightpink">
+                <h5 class="text-center">&copy;2021- NHÀ SÁCH.ALLRIGHT RESERVED</h5>
+                <p class="text-center">wesite được phát triển để làm bài tập môn thực hành lập trình web  </p>
+                <p class="text-center">&copy; @DateTime.Now.Year - My ASP.NET Application </p>
+            </footer>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,32 @@
+﻿/* Định nghĩa phong cách cho form đăng ký */
+.register-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+    /* Định nghĩa phong cách cho các trường input */
+    .register-form input[type="text"],
+    .register-form input[type="password"],
+    .register-form input[type="email"],
+    .register-form input[type="date"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    .register-form input[type="submit"] {
+        width: 100%;
+        padding: 15px;
+        border: none;
+        border-radius: 5px;
+        background-color: #4caf50;
+        color: white;
+        cursor: pointer;
+    }
